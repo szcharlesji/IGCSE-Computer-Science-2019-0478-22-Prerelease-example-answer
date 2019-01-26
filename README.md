@@ -43,3 +43,6 @@ Display this total fee. Display the item number and final bid for all the items 
 reached their reserve price. Display the item number of any items that have received no bids. Display
 the number of items sold, the number of items that did not meet the reserve price and the number of
 items with no bids.
+
+
+[Click here to see the solution](https://github.com/CharlieGai/IGCSE-Computer-Science-2019-0478-22-Prerelease-example-answer/blob/master/Auction.py)
