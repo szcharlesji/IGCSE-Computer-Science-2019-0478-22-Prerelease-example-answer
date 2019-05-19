@@ -45,4 +45,4 @@ the number of items sold, the number of items that did not meet the reserve pric
 items with no bids.
 
 
-[Click here to see the solution](https://github.com/CharlieGai/IGCSE-Computer-Science-2019-0478-22-Prerelease-example-answer/blob/master/Auction.py)
+[Click here to see the solution](https://github.com/CharlieGai/IGCSE-Computer-Science-2019-0478-22-Prerelease-example-answer/tree/master/Pseudocode)
