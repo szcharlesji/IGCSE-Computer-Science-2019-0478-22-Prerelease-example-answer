@@ -1,60 +1,66 @@
-# Task1
-n = 0
-item_no = [0] * n
-description = [""] * n
-reserve_price = [0] * n
-num_of_bids = [0] * n
+# arrays hard coded - refer to Task_1.py
 
-while n < 10:
-    print("There should be at least 10 items")
-    n = int(input("Number of items? ="))
+item_list = ['Phone', 'Laptop', 'Car', 'Trainers', 'Guitar']
+item_number = [0, 1, 2, 3, 4]
+description_list = ['iPhone X 128Gb White', 'Microsoft Surface Pro', 'Porsche Carrera Turbo', 'Adidas UltraBoost', 'Gibson SG']
+reserve_price_list = [1000, 1500, 45000, 120, 2700]
+number_of_bids = [0, 0, 0, 0 ,0]
+current_highest_bid = [0, 0, 0, 0 , 0]
 
-for i in range(0, n):
-    print("Input the data for item", i + 1)
-    item_no[i] = int(input("ItemNo of item ="))
+buyer_list = []
+no_of_buyers = int(input('How many buyers are at the auction? '))
+for i in range(no_of_buyers):
+    buyer_list.append(i)
 
-    for j in range(0, i):
-        while item_no[i] == item_no[j]:
-            print("The item number must be unique !")
-            item_no[i] = int(input("ItemNo of item ="))
-            j = 0
-    description[i] = input("Description of item =")
-    reserve_price[i] = int(input("Reverse price of item ="))
+auction = True
+while auction == True:
+    found = False
+    while found == False:
+        item = input('Please enter an item: ')
+        for i in range(5): # should be number_of_items
+            if item == item_list[i]:
+                print('Item found')
+                print('Item:', item_list[i])
+                print('Item number:', item_number[i])
+                print('Description:', description_list[i])
+                print('Current highest bid:', current_highest_bid[i])
+                found = True
+                item_index = i
+                break
+        if found == False:
+            print('Item is not in the auction!')
 
-# Task 2
+    buyer_valid = False
+    while buyer_valid == False:
+        buyer_number = int(input('Please enter your buyer number: '))
+        for i in range(no_of_buyers):
+            if buyer_number == i:
+                buyer_valid = True
+                break
+        if buyer_valid == False:
+            print('Invalid buyer number!')
 
-highest_bids = [0] * n
-buyer_code = [0] * n
-search_code = 0
-current_buyer_code = 0
-new_bid = 0
-choice = False
+    bid_valid = False
+    while  bid_valid == False:
+        bid = int(input('Please enter a bid: '))
+        if bid > current_highest_bid[item_index]:
+            print('Your bid is successful!')
+            current_highest_bid[item_index] = bid
+            number_of_bids[item_index] = number_of_bids[item_index] + 1
+            bid_valid = True
+        else:
+            print('Your bid is too low!\nPlease bid again')
 
-while True:
-    search_code = int(input("Enter the itemNo (-1 To Exit) ="))
+    answer = input('Would you like to continue bidding? y/n')
+    if answer == 'n':
+        auction = False
+print('\nAuction ended!')
 
-    if search_code == -1:
-        break
+print('number_of_bids:', number_of_bids)
+print('current_highest_bid:', current_highest_bid)
 
-    for i in range(0, n):
-        if item_no[i] == search_code:
-            print("Item number : ", item_no[i])
-            print("Description : ", description[i])
-            print("Current Highest Bid : ", highest_bids[i])
-            print("The buyer : ", buyer_code[i])
-            choice = str(input("Would you like to bid for this item? Y/N ="))
 
-            if choice.lower() == "y":
-                current_buyer_code = int(input("Please enter your buyer code = "))
-                print("The Highest Bid Now Is = ", highest_bids[i])
-                new_bid = int(input("Please Enter Your Bid = "))
 
-                if new_bid > highest_bids[i]:
-                    highest_bids[i] = new_bid
-                    num_of_bids[i] = num_of_bids[i] + 1
-                    buyer_code[i] = current_buyer_code
-                    print("Success!!!")
-                else:
-                    print("Your Bid Is not Accepted!!!")
-            elif choice.lower() == "n":
-                print("You've chosen not to bid for it")
+
+
+
